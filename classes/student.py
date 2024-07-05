@@ -17,7 +17,12 @@ class Student(User):
     def __init__(self, name, age, school_id, password, role="Student"):
         super().__init__(name, age, school_id, password, role)
 
-
+    def __str__(self):
+        return f"""
+{(self.name).upper()}
+----------------
+age: {self.age}
+id: {self.id}"""
     @property
     def school_id(self):
         return self.id

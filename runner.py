@@ -9,49 +9,41 @@ ridgemont_high = School('Ridgemont High')
 # print(robert)
 
 ridgemont_high.students = Student.load_all_students()
-# print(ridgemont_high.students)
+# print(ridgemont_high.list_students())
 
 # triton = Staff('Triton', 5, "p123", 1)
 # print(triton)
 
-ridgemont_high.staff = Staff.load_all_staff()
+# ridgemont_high.staff = Staff.load_all_staff()
 # print(ridgemont_high.staff)
 
+# ridgemont_high.find_student_by_id(13345)
 
 main_ui_message = f"""
 {ridgemont_high.name} Student Interface
 -------------------------------
 Welcome, Richard. Your access level is Principal
-    What would you like to do?
-    Options:
+What would you like to do?
+Options:
     1 List All Students
     2 View Individual Student <student_id>
     3 Add a Student
     4 Remove a Student <student_id>
-    5 List all Staff
-    6 Quit
+    5 Quit
 """
 # Command line program
 is_active = True
+# is_active = False
 while is_active:
     cmd = input(main_ui_message)
     # view all students
     if cmd == '1':
-        print(ridgemont_high.students)
-        pass
+        ridgemont_high.list_students()
 
     # view student by id
     elif cmd == '2':
         desired_school_id = input("Enter Student ID you would like information for: ")
-        desired_student = None
-        for student in ridgemont_high.students:
-            if student.school_id == desired_school_id:
-                desired_student = student
-        # error handling
-        if desired_student is None:
-            print(f"Student with school_id {desired_school_id} does not exist")
-        else:
-            print(desired_student)
+        ridgemont_high.find_student_by_id(desired_school_id)
 
     # add a student
     elif cmd == '3':
@@ -70,12 +62,9 @@ while is_active:
                 updated_students.append(student)
         ridgemont_high.students = updated_students
         print(updated_students)
-    # view all staff
-    elif cmd == '5':
-        print(ridgemont_high.staff)
 
     # quit
-    elif cmd == '6':
+    elif cmd == '5':
         is_active = False
     
     # error handling

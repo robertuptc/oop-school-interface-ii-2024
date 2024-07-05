@@ -20,5 +20,5 @@ class Staff:
         self.employee_id = employee_id
         self.role = role
     
-    def __repr__(self):
-        return f"{self.name} | {self.age} | {self.role}"
+    # def __repr__(self):
+    #     return f"{self.name} | {self.age} | {self.role}"
